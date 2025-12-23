@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>World Car Manufacturers</title>
+        <style>
+        :root{--accent:#0b7;--bg:#f7f7fb;--card:#fff;--text:#111;--muted:#6b7280}
+        *{box-sizing:border-box}
+        body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:var(--text);background-color:var(--bg);display:flex;flex-direction:column;min-height:100vh}
+        /* site wallpaper (change path if your file is elsewhere) */
+        body{background-image:url('carwebsitewallpaper.jpg');background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat}
+        /* dark overlay for readability */
+        body::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,0.35);pointer-events:none;z-index:0}
+        header{background:linear-gradient(90deg,#0b7,#06f);color:white;padding:1rem 1.25rem}
+        .container{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1}
+        nav{display:flex;gap:1rem;align-items:center;justify-content:space-between}
+        .brand{font-weight:700;font-size:1.25rem}
+        .nav-links{display:flex;gap:0.75rem}
+        .nav-links a{color:rgba(255,255,255,0.95);text-decoration:none;padding:.5rem .75rem;border-radius:6px;transition:background .15s}
+        .nav-links a:hover{background:rgba(255,255,255,0.08)}
+        .hamburger{display:none;background:none;border:0;color:white;font-size:1.25rem}
+        .hero{padding:2rem 0;text-align:center}
+        .hero-inner{display:inline-block;background:rgba(255,255,255,0.95);color:var(--text);padding:1rem 1.25rem;border-radius:12px;box-shadow:0 8px 24px rgba(16,24,40,0.08);max-width:900px;text-align:center}
+        .hero h1{margin:0;font-size:2rem;color:var(--text)}
+        .hero p{margin:.5rem 0;color:var(--muted)}
+        .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;padding:1rem 0 2rem}
+        .card{background:var(--card);border-radius:12px;padding:1.4rem;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 14px 44px rgba(16,24,40,0.14);cursor:pointer;transition:transform .18s ease,box-shadow .18s ease;border:1px solid rgba(0,0,0,0.06);text-align:center;aspect-ratio:3/4;position:relative;overflow:hidden;background-size:cover;background-position:center;max-width:520px;min-height:420px;margin:0 auto}
+        .card:focus{outline:3px solid rgba(11,119,255,0.14);outline-offset:3px}
+        .card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 12px 30px rgba(16,24,40,0.12)}
+        /* overlay for background images */
+        .card::before{content:"";position:absolute;inset:0;border-radius:12px;background:linear-gradient(180deg,rgba(0,0,0,0.06),rgba(0,0,0,0.32));opacity:0;transition:opacity .18s}
+        .card.has-img::before{opacity:1}
+        .card > *{position:relative;z-index:2}
+        .card.has-img{color:white}
+        .card.has-img .flag{filter:drop-shadow(0 2px 4px rgba(0,0,0,0.4))}
+        .flag{font-size:3rem;margin-bottom:.65rem}
+        .card h3{margin:.25rem 0 0;font-size:1.45rem}
+        .card p{margin:0;margin-top:.25rem;color:var(--muted);font-size:.875rem}
+        footer{margin-top:auto;background:#0f1720;color:white;padding:1rem 0}
+        .footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 1.25rem;font-size:.9rem;color:rgba(255,255,255,.9)}
+        @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+        @media (max-width:560px){nav .nav-links{display:none}.hamburger{display:block}.grid{grid-template-columns:repeat(1,1fr)}}
+        </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <nav>
+            <div class="brand">Car Manufacturers 🌍</div>
+            <div class="nav-links" id="navLinks">
+                <a href="#">Home</a>
+                <a href="#">Manufacturers</a>
+                <a href="#">Countries</a>
+                <a href="#">Contact</a>
+            </div>
+            <button class="hamburger" aria-expanded="false" aria-controls="navLinks" id="hamburger">☰</button>
+        </nav>
+    </div>
+</header>
+<main class="container">
+    <section class="hero">
+        <div class="hero-inner">
+            <h1>Cars from Around the World</h1>
+            <p>Explore manufacturers grouped by country — tap a card to learn more.</p>
+        </div>
+    </section>
+
+    <section class="grid" aria-label="Country cards">
+        <button class="card" type="button" data-img="japancard.jpg" data-page="japan.html"><div class="flag">🇯🇵</div><h3>Japan</h3><p>Japanese manufacturers</p></button>
+        <button class="card" type="button" data-img="germancard.jpg" data-page="German.html"><div class="flag">🇩🇪</div><h3>Germany</h3><p>German manufacturers</p></button>
+        <button class="card" type="button" data-img="koreancard.jpg" data-page="korea.html"><div class="flag">🇰🇷</div><h3>Korea</h3><p>Korean manufacturers</p></button>
+        <button class="card" type="button" data-img="americancard.jpg" data-page="american.html"><div class="flag">🇺🇸</div><h3>USA</h3><p>American manufacturers</p></button>
+        <button class="card" type="button" data-img="frenchcard.jpg" data-page="france.html"><div class="flag">🇫🇷</div><h3>France</h3><p>French manufacturers</p></button>
+        <button class="card" type="button" data-img="italycard.jpg" data-page="italy.html"><div class="flag">🇮🇹</div><h3>Italy</h3><p>Italian manufacturers</p></button>
+        <button class="card" type="button" data-img="ukcard.jpg" data-page="British.html"><div class="flag">🇬🇧</div><h3>United Kingdom</h3><p>British manufacturers</p></button>
+        <button class="card" type="button" data-img="swedencard.jpg" data-page="sweden.html"><div class="flag">🇸🇪</div><h3>Sweden</h3><p>Swedish manufacturers</p></button>
+        <button class="card" type="button" data-img="chinacard.jpg" data-page="china.html"><div class="flag">🇨🇳</div><h3>China</h3><p>Chinese manufacturers</p></button>
+        <button class="card" type="button" data-img="indiacard.jpg" data-page="india.html"><div class="flag">🇮🇳</div><h3>India</h3><p>Indian manufacturers</p></button>
+        <button class="card" type="button" data-img="spaincard.jpg" data-page="spain.html"><div class="flag">🇪🇸</div><h3>Spain</h3><p>Spanish manufacturers</p></button>
+        <button class="card" type="button" data-img="otherscard.jpg" data-page="others.html"><div class="flag">🌐</div><h3>Others</h3><p>Other countries</p></button>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div>© <span id="year"></span> Car Manufacturers</div>
+        <div><small>Built with ❤️ — select a card to get started</small></div>
+    </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', String(!expanded));
+    navLinks.style.display = expanded ? '' : 'flex';
+});
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+        // instead of alert, navigate to the page
+        const page = card.dataset.page; // new attribute to hold URL
+        if(page) window.location.href = page;
+    });
+});
+
+// initialize background images for cards
+document.querySelectorAll('.card').forEach(card=>{
+    // prefer an <img> inside the card, then data-img attribute, otherwise build path from title
+    let img = card.dataset.img;
+    const innerImg = card.querySelector('img');
+    if(innerImg && innerImg.src){
+        img = innerImg.getAttribute('src');
+        // hide the inline img so it doesn't overlap the background
+        innerImg.style.display = 'none';
+    }
+    if(!img){
+        const title = card.querySelector('h3')?.textContent || '';
+        const file = title.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'') + '.jpg';
+        img = 'images/' + file;
+    }
+    // set background and mark
+    card.style.backgroundImage = `url('${img}')`;
+    card.classList.add('has-img');
+});
+</script>
+
+</body>
+</html>
